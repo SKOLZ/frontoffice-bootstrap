@@ -12,9 +12,12 @@ function Navbar({ currentUser = { name: 'Jorge' } }) {
     <header className={`row middle end ${styles.header}`}>
       <h6 className={`m-right-2 ${styles.userName}`}>Hi {currentUser.name}!</h6>
       <button type="button">
-        <ReactSVG src={icLogout} beforeInjection={svg => {
-          svg.classList.add('logout-icon')
-        }} />
+        <ReactSVG
+          src={icLogout}
+          beforeInjection={svg => {
+            svg.classList.add('logout-icon');
+          }}
+        />
       </button>
     </header>
   );

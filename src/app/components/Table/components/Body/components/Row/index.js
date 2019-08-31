@@ -11,8 +11,6 @@ import { actionType, columnsType, configType } from '~components/Table/propTypes
 
 import Cell from '~components/Table/components/Cell';
 
-import Routes from '~constants/routes';
-
 import Trash from '~assets/trash.svg';
 
 import Edit from '~assets/edit.svg';

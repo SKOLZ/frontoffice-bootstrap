@@ -13,11 +13,21 @@ function Headers({ config, headers }) {
   return (
     <div className={classNames(configStyles.headers)}>
       {Object.keys(headers).map(columnName => (
-        <Cell key={`${columnName}-header`} className={classNames(styles.headerCell, configStyles.headerCell, `item-${headers[columnName].columnProportion}`)}>
+        <Cell
+          key={`${columnName}-header`}
+          className={classNames(
+            styles.headerCell,
+            configStyles.headerCell,
+            `item-${headers[columnName].columnProportion}`
+          )}
+        >
           {headers[columnName].name}
         </Cell>
       ))}
-      <Cell key="action-header" className={classNames(styles.actionHeader, styles.headerCell, configStyles.headerCell)}></Cell>
+      <Cell
+        key="action-header"
+        className={classNames(styles.actionHeader, styles.headerCell, configStyles.headerCell)}
+      />
     </div>
   );
 }

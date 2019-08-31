@@ -13,7 +13,7 @@ function Table({ bodies, className, columns, config, error, errorMessage, loadin
     <div className={`${styles.container} ${className} item-1 column`}>
       <Headers config={config} headers={columns} />
       {!loading && !error && (
-        <div className={classNames(styles.bodies, configStyles.bodies, "item-1")}>
+        <div className={classNames(styles.bodies, configStyles.bodies, 'item-1')}>
           {bodies.map(section => (
             <Body
               columns={columns}

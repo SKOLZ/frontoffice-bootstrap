@@ -12,9 +12,12 @@ function EditLayout({ modelData = {}, handleSubmit, handleCancel, handleDelete }
     <form onSubmit={handleSubmit} className={styles.container}>
       <div className="row middle form-header">
         <button onClick={handleCancel} type="button" className="back-button m-right-2">
-          <ReactSVG src={leftArrow}  beforeInjection={svg => {
-              svg.classList.add("back-ic")
-            }} />
+          <ReactSVG
+            src={leftArrow}
+            beforeInjection={svg => {
+              svg.classList.add('back-ic');
+            }}
+          />
         </button>
         <h1 className="title2 capitalize m-right-auto">
           {t('Edit:resourceEdition', { resource: modelData.name })}

@@ -46,22 +46,20 @@ class Edit extends Component {
   };
 
   render() {
-    return (
-      this.props.loading ? (
-        <div className="ball-triangle-path">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      ) : (
-        <EditContainer
-          modelData={this.state.data}
-          onSubmit={this.handleSubmit}
-          initialValues={this.props.resource}
-          handleCancel={this.onCancel}
-          handleDelete={this.onDelete}
-        />
-      )
+    return this.props.loading ? (
+      <div className="ball-triangle-path">
+        <div />
+        <div />
+        <div />
+      </div>
+    ) : (
+      <EditContainer
+        modelData={this.state.data}
+        onSubmit={this.handleSubmit}
+        initialValues={this.props.resource}
+        handleCancel={this.onCancel}
+        handleDelete={this.onDelete}
+      />
     );
   }
 }
