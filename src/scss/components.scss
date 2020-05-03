@@ -12,6 +12,16 @@
   }
 }
 
+.select {
+  @extend .input;
+  line-height: initial;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}
+
 .button-primary {
   background: $primary-color;
   height: 40px;

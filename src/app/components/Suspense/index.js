@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 
-import Loading from '../Spinner/components/loading';
+import Spinner from '../Spinner';
 
-import { DEFAULT_MAX_DURATION } from './constants';
+const DEFAULT_MAX_DURATION = 500;
 
 function CustomSuspense({ maxDuration, fallback, children }) {
   return (
@@ -14,7 +14,7 @@ function CustomSuspense({ maxDuration, fallback, children }) {
 }
 
 CustomSuspense.defaultProps = {
-  fallback: <Loading />,
+  fallback: <Spinner />,
   maxDuration: DEFAULT_MAX_DURATION
 };
 

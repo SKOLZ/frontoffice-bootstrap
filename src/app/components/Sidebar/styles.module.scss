@@ -21,6 +21,10 @@
     background: rgba($primary-color, 0.05);
   }
 
+  &::first-letter {
+    text-transform: uppercase;
+  }
+
   &.active-model {
     color: $primary-color;
     font-weight: 400;
@@ -30,6 +34,6 @@
 
 .logo {
   height: 60px;
-  max-width: calc(100% - 60px);
   align-self: center;
+  object-fit: cover;
 }

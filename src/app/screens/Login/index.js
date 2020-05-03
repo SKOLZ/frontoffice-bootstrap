@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as authActions } from '~redux/Auth/actions';
-
 import Login from './layout';
+
+import { actionCreators as authActions } from '~redux/Auth/actions';
 
 function LoginContainer({ onSubmit }) {
   return <Login onSubmit={onSubmit} />;
@@ -23,7 +23,4 @@ const mapDispatchToProps = dispatch => ({
   onSubmit: values => dispatch(authActions.login(values))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LoginContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);

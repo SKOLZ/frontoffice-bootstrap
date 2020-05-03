@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { string, number, func } from 'prop-types';
 import classNames from 'classnames';
 
-import Button from '~components/Button';
-
 import { NEXT, PREVIOUS, DEFAULT_CURRENT_PAGE } from '../../constants';
 
 import { isDisabled } from './utils';
 import styles from './styles.module.scss';
+
+import Button from '~components/Button';
 
 class ArrowAction extends Component {
   handleClick = () => {

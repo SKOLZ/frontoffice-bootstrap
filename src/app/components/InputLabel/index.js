@@ -9,12 +9,12 @@ function InputLabel({
   dataFor,
   label,
   inputClassName,
-  name,
   placeholder,
   inputId,
   inputType,
   input,
-  disabled
+  disabled,
+  field
 }) {
   return (
     <div className={`column start ${className}`}>
@@ -23,29 +23,30 @@ function InputLabel({
       </label>
       <input
         className={`input ${inputClassName}`}
-        name={name}
+        name={field.name}
         placeholder={placeholder}
         autoComplete="new-password"
         id={inputId}
-        type={inputType}
+        type={field.type || inputType}
         {...input}
         disabled={disabled}
+        {...field}
       />
     </div>
   );
 }
 
 InputLabel.propTypes = {
-  dataFor: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  inputId: PropTypes.string.isRequired,
-  inputType: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   className: PropTypes.string,
+  dataFor: PropTypes.string,
   disabled: PropTypes.bool,
+  handleChange: PropTypes.func,
   input: PropTypes.shape({}),
   inputClassName: PropTypes.string,
+  inputId: PropTypes.string,
+  inputType: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string,
   placeholder: PropTypes.string,
   textClassName: PropTypes.string
 };

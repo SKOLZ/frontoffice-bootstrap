@@ -5,17 +5,18 @@ import { arrayOf, bool, number, string } from 'prop-types';
 import Headers from './components/Headers';
 import Body from './components/Body';
 import styles from './styles.module.scss';
-import { bodyType, configType, columnsType, emptyMessageType } from './propTypes';
+import { bodyType, configType, columnsType } from './propTypes';
 
-function Table({ bodies, className, columns, config, error, errorMessage, loading }) {
+function Table({ bodies, className, columns, config, error, errorMessage, loading, data }) {
   const { styles: configStyles = {} } = config;
   return (
     <div className={`${styles.container} ${className} item-1 column`}>
-      <Headers config={config} headers={columns} />
+      <Headers config={config} headers={columns} data={data} />
       {!loading && !error && (
-        <div className={classNames(styles.bodies, configStyles.bodies, "item-1")}>
+        <div className={classNames(styles.bodies, configStyles.bodies, 'item-1')}>
           {bodies.map(section => (
             <Body
+              data={data}
               columns={columns}
               config={config}
               emptyBodyMessage={section.emptyBodyMessage}

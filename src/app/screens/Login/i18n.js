@@ -6,5 +6,5 @@ i18next.addResources('es', 'Login', {
   enter: 'Ingresar',
   forgotPassword: 'Olvidé mi contraseña',
   email: 'E-mail',
-  password: 'Contraseña',
+  password: 'Contraseña'
 });

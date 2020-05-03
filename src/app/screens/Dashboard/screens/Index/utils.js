@@ -1,10 +1,9 @@
 import { t } from 'i18next';
 
-import { stripObjectBasedOnKeyArray } from '~utils/general';
-
-import { formatBodies } from '~components/Table/utils';
-
 import styles from './styles.module.scss';
+
+import { stripObjectBasedOnKeyArray } from '~utils/general';
+import { formatBodies } from '~components/Table/utils';
 
 export const parseColumns = ({ columns, baseColumns }) =>
   stripObjectBasedOnKeyArray({

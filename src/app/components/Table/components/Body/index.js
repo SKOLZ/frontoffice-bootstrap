@@ -2,13 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 import { arrayOf, string } from 'prop-types';
 
-import { columnsType, configType, emptyMessageType, rowType } from '~components/Table/propTypes';
-
-import styles from '~components/Table/styles.module.scss';
-
 import Row from './components/Row';
 
-function Body({ columns, config, title, rows, emptyBodyMessage }) {
+import { columnsType, configType, rowType } from '~components/Table/propTypes';
+import styles from '~components/Table/styles.module.scss';
+
+function Body({ columns, config, title, rows, emptyBodyMessage, data }) {
   const { styles: configStyles = {} } = config;
 
   return (
@@ -18,6 +17,7 @@ function Body({ columns, config, title, rows, emptyBodyMessage }) {
         {!!rows.length &&
           rows.map(row => (
             <Row
+              showActions={!data.hide_actions}
               action={row.action}
               columns={columns}
               config={row.config}

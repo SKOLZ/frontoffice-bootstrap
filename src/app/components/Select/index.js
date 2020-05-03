@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 
-function Picker({
+import styles from './styles.module.scss';
+
+function Select({
   className,
   textClassName,
   dataFor,
@@ -10,34 +11,37 @@ function Picker({
   inputClassName,
   placeholder,
   inputId,
-  inputType,
   input,
   disabled,
-  field
+  field,
+  options
 }) {
-  const parsedValue = moment(field.value).format('YYYY-MM-DD');
   return (
     <div className={`column start ${className}`}>
-      <label className={`${textClassName} m-bottom-1`} htmlFor={dataFor}>
+      <label className={`${textClassName} ${styles.select} m-bottom-1`} htmlFor={dataFor}>
         {label}
       </label>
-      <input
-        className={`input ${inputClassName}`}
+      <select
+        className={`select ${inputClassName}`}
         name={field.name}
         placeholder={placeholder}
         autoComplete="new-password"
         id={inputId}
-        type={field.type || inputType}
         {...input}
         disabled={disabled}
         {...field}
-        value={parsedValue}
-      />
+      >
+        {options.map(option => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }
 
-Picker.propTypes = {
+Select.propTypes = {
   className: PropTypes.string,
   dataFor: PropTypes.string,
   disabled: PropTypes.bool,
@@ -52,11 +56,11 @@ Picker.propTypes = {
   textClassName: PropTypes.string
 };
 
-Picker.defaultProps = {
+Select.defaultProps = {
   className: '',
   inputClassName: '',
   placeholder: '',
   textClassName: ''
 };
 
-export default Picker;
+export default Select;

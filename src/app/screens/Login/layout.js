@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
 
-import logo from '~assets/logo-black.png';
-
-import InputLabel from '~components/InputLabel';
-
 import { FIELDS, LOGIN_FORM_NAME } from './constants';
 import styles from './styles.module.scss';
+
+import logo from '~assets/logo-black.png';
+import InputLabel from '~components/InputLabel';
 
 function Login({ handleSubmit }) {
   return (

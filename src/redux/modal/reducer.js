@@ -1,4 +1,4 @@
-import { completeReducer, createReducer, onReadValue, onSpreadValue } from 'redux-recompose';
+import { completeReducer, createReducer } from 'redux-recompose';
 
 import { actions } from './actions';
 

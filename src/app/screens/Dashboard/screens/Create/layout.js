@@ -1,35 +1,35 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
 import { t } from 'i18next';
-import ReactSVG from 'react-svg';
-
-import leftArrow from '~assets/left-arrow.svg';
+import { Field } from 'formik';
 
 import styles from './styles.module.scss';
 
+import leftArrow from '~assets/left-arrow.svg';
+import Icon from '~components/Icon';
+import { defaultInputs } from '~constants/structure';
+
 function CreationLayout({ modelData, handleSubmit, handleCancel }) {
   return (
-    <form onSubmit={handleSubmit} className={styles.container}>
+    <form className={styles.container} onSubmit={handleSubmit}>
       <div className="row middle start form-header">
         <button onClick={handleCancel} type="button" className="back-button m-right-2">
-          <ReactSVG src={leftArrow}  beforeInjection={svg => {
-              svg.classList.add("back-ic")
-            }} />
+          <Icon src={leftArrow} classList={['back-ic']} />
         </button>
-        <h1 className="title2 capitalize">
-          {t('Create:resourceCreation', { resource: modelData.name })}
-        </h1>
+        <h1 className="title2 capitalize">{t('Create:resourceCreation', { resource: modelData.name })}</h1>
       </div>
       <div className="form-body">
         {modelData.attributes &&
           modelData.attributes
-            .filter(attribute => attribute.create)
+            .filter(attribute => !modelData.create || modelData.create.includes(attribute.name))
             .map(attribute => (
               <Field
-                key={attribute.name}
-                className="form-field m-bottom-3"
-                component={attribute.component}
                 {...attribute.componentAttributes}
+                key={attribute.name}
+                component={attribute.component || defaultInputs[attribute.type]}
+                className="form-field m-bottom-3"
+                name="id"
+                label={t(`${modelData.name}:${attribute.name}_attribute`)}
+                type={attribute.type}
               />
             ))}
       </div>
@@ -45,6 +45,4 @@ function CreationLayout({ modelData, handleSubmit, handleCancel }) {
   );
 }
 
-export default reduxForm({
-  form: 'creation'
-})(CreationLayout);
+export default CreationLayout;

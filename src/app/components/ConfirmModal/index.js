@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
 import { connect } from 'react-redux';
+import { t } from 'i18next';
 import { withRouter } from 'react-router-dom';
 
-import { actionCreators as modalActions } from '~redux/modal/actions';
-
 import styles from './styles.module.scss';
+
+import { actionCreators as modalActions } from '~redux/modal/actions';
 
 class ConfirmModal extends Component {
   handleConfirm = () => {
@@ -23,13 +24,13 @@ class ConfirmModal extends Component {
         classNames={{ modal: styles.modalWrapper, closeIcon: 'modal-close' }}
       >
         <div className={`${styles.modalContent} column center`}>
-          <h2 className="subtitle m-bottom-6">¿Estás seguro que querés cancelar esta acción?</h2>
+          <h2 className="subtitle m-bottom-6">{t('ConfirmModal:modalTitle')}</h2>
           <div className="row center">
             <button type="button" onClick={this.handleConfirm} className="button-primary m-right-2">
-              Confirmar
+              {t('ConfirmModal:confirm')}
             </button>
             <button type="button" onClick={toggleCancelModal} className="button-secondary">
-              cancel
+              {t('ConfirmModal:cancel')}
             </button>
           </div>
         </div>
@@ -42,9 +43,4 @@ const mapDispatchToProps = dispatch => ({
   toggleCancelModal: () => dispatch(modalActions.toggleCancelModal())
 });
 
-export default withRouter(
-  connect(
-    null,
-    mapDispatchToProps
-  )(ConfirmModal)
-);
+export default withRouter(connect(null, mapDispatchToProps)(ConfirmModal));

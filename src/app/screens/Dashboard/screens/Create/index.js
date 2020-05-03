@@ -1,41 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-
-import structure from '~constants/structure';
-
-import { actionCreators as modalActions } from '~redux/modal/actions';
-
-import { actionCreators as resourceActions } from '~redux/resource/actions';
+import { Formik } from 'formik';
 
 import CreationContainer from './layout';
 
-class Create extends Component {
-  state = {
-    data: {}
-  };
+import { actionCreators as modalActions } from '~redux/modal/actions';
+import { actionCreators as resourceActions } from '~redux/resource/actions';
 
-  componentDidMount() {
-    this.setState({
-      data: structure.find(model => this.props.match.path.split('/')[1] === model.endpoint)
-    });
-  }
-
-  handleSubmit = body => {
-    this.props.dispatch(resourceActions.createResource({ resource: this.state.data.name, body }));
-  };
-
-  onCancel = () => {
-    this.props.dispatch(modalActions.toggleCancelModal());
-  };
-
-  render() {
-    return (
-      <CreationContainer
-        modelData={this.state.data}
-        onSubmit={this.handleSubmit}
-        handleCancel={this.onCancel}
-      />
-    );
-  }
+function Create({ dispatch, data }) {
+  const handleSubmit = body => dispatch(resourceActions.createResource({ resource: data.name, body }));
+  const onCancel = () => dispatch(modalActions.toggleCancelModal());
+  return (
+    <Formik
+      onSubmit={handleSubmit}
+      initialValues={{}}
+      render={props => <CreationContainer {...props} modelData={data} handleCancel={onCancel} />}
+    />
+  );
 }
+
 export default connect()(Create);

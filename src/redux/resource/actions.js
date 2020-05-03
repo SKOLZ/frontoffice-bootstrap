@@ -5,15 +5,12 @@ import { t } from 'i18next';
 
 import { history } from '../store';
 
-import { defaultCamelcase } from '~serializer/defaultSerializer';
-
-import * as ConectorService from '~services/ConectorService';
-
-import { actionCreators as paginatorActions } from '~redux/Paginator/actions';
-
-import Routes from '~constants/routes';
-
 import { formatPaging } from './utils';
+
+import { defaultCamelcase } from '~serializer/defaultSerializer';
+import * as ConectorService from '~services/ConectorService';
+import { actionCreators as paginatorActions } from '~redux/Paginator/actions';
+import Routes from '~constants/routes';
 
 export const actions = createTypes(
   completeTypes(
@@ -50,7 +47,7 @@ export const actionCreators = {
     injections: [
       withSuccess(dispatch => {
         dispatch(push(Routes.HOME));
-        toast(t('List:created'));
+        toast(t('Index:created'));
       })
     ]
   }),
@@ -61,7 +58,7 @@ export const actionCreators = {
     injections: [
       withSuccess(() => {
         history.goBack();
-        toast(t('List:deleted'));
+        toast(t('Index:deleted'));
       })
     ]
   }),
@@ -72,7 +69,7 @@ export const actionCreators = {
     injections: [
       withSuccess(dispatch => {
         dispatch(push(Routes.HOME));
-        toast(t('List:deleted'));
+        toast(t('Index:deleted'));
       })
     ]
   })

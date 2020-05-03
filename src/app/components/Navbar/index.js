@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ReactSVG from 'react-svg';
-
-import icLogout from '~assets/ic_logout.svg';
 
 import styles from './styles.module.scss';
+
+import icLogout from '~assets/ic_logout.svg';
+import Icon from '~components/Icon';
 
 function Navbar({ currentUser = { name: 'Jorge' } }) {
   return (
     <header className={`row middle end ${styles.header}`}>
       <h6 className={`m-right-2 ${styles.userName}`}>Hi {currentUser.name}!</h6>
       <button type="button">
-        <ReactSVG src={icLogout} beforeInjection={svg => {
-          svg.classList.add('logout-icon')
-        }} />
+        <Icon src={icLogout} classList={['logout-icon']} />
       </button>
     </header>
   );
